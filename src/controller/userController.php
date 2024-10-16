@@ -9,7 +9,7 @@ class userController {
         $userData = $model->login($identifier);
 
         if ($userData && password_verify($password, $userData['password'])) {
-            
+
             return "Login successful";
         } else {
             return "Invalid username or password";  
@@ -37,13 +37,6 @@ class userController {
         $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     
         return $model->register($firstName, $lastName, $middleName, $birthdate, $username, $password, $email);
-    }
-
-    public function user_logout() {
-        session_start();
-        session_unset();
-        session_destroy();
-        return "Logout successful";
     }
 }
 ?>
