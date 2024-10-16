@@ -14,7 +14,7 @@ if (isset($_POST['type'])) {
             $ctr = new userController();
             echo $ctr->user_register($_POST);
             break;
-        
+
         default:
             echo "Invalid request type";
             break;

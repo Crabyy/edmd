@@ -22,34 +22,32 @@ function user_login() {
 function user_register() {
     const formData = $("#registerForm").serializeArray();
     let isValid = true;
-    
-    for (let i = 0; i < formData.length; i++) {
-        const field = formData[i];
+
+    formData.forEach(field => {
         if (!field.value.trim()) {
             isValid = false;
             alert(`Please fill out the ${field.name} field.`);
-            break;
+            return false;
         }
-    }
+    });
 
-  if (!isValid) return;
+    if (!isValid) return;
 
-  $.ajax({
-      type: "POST",
-      url: "../../src/routes/routes.php",
-      data: formData + "&type=register", 
-      success: function (data) {
-          if (data === "Registration successful") {
-              alert("Registration successful! Redirecting to login page.");
-              window.location.href = "login.php"; // Redirect to login page
-          } else {
-              alert("Registration failed: " + data);
-          }
-      },
-      error: function (xhr, status, error) {
-          console.error("Error:", error);
-      }
-  });
+    $.ajax({
+        type: "POST",
+        url: "../../src/routes/routes.php",
+        data: $.param(formData) + "&type=register",
+        success: function (data) {
+            console.log("Response from routes.php:", data);
+            if (data === "Registration successful") {
+                alert("Registration successful! Redirecting to login page.");
+                window.location.href = "login.php";
+            } else {
+                alert("Registration failed: " + data);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
 }
-
-
