@@ -20,14 +20,14 @@ class userController {
         $db = new Database();
         $con = $db->initDatabase();
         $model = new userModel($con);
-    
+
         $requiredFields = ['first_name', 'last_name', 'middle_name', 'birthdate', 'username', 'password', 'email'];
-        foreach ($requiredFields as $field) {
+            foreach ($requiredFields as $field) {
             if (empty($data[$field])) {
-                return "Error: $field is required.";
+            return "Error: $field is required.";
             }
         }
-    
+
         $firstName = htmlspecialchars($data['first_name']);
         $lastName = htmlspecialchars($data['last_name']);
         $middleName = htmlspecialchars($data['middle_name']);
@@ -35,7 +35,7 @@ class userController {
         $username = htmlspecialchars($data['username']);
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
         $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-    
+
         return $model->register($firstName, $lastName, $middleName, $birthdate, $username, $password, $email);
     }
 }

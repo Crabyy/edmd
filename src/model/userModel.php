@@ -1,6 +1,4 @@
 <?php
-include_once '../static/query.php';
-
 class userModel {
     private $con;
 
