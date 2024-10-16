@@ -51,3 +51,22 @@ function user_register() {
         }
     });
 }
+
+function user_Logout() {
+    $.ajax({
+        type: "POST",
+        url: "../../src/routes/routes.php",
+        data: { type: "logout" },
+        success: function (data) {
+            if (data === "Logout successful") {
+                window.location.href = "login.php";
+            } else {
+                alert("Logout failed.");
+            }
+        },
+        error: function (error) {
+            console.error("Error:", error);
+        }
+    });
+}
+
