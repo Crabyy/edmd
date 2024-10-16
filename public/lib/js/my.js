@@ -1,0 +1,55 @@
+function user_login() {
+  const formData = $("#loginForm").serialize()
+  
+  $.ajax({
+      type: "POST",
+      url: "../../src/routes/routes.php",
+      data: formData + "&type=login",
+      success: function (data) {
+         console.log(data);
+          if (data === "Login successful") {
+              window.location.href = "home.php"; 
+          } else {
+            alert("Invalid username/email or password");
+          }
+      },
+      error: function (error) {
+          console.error("Error:", error);
+      }
+  });
+}
+
+function user_register() {
+    const formData = $("#registerForm").serializeArray();
+    let isValid = true;
+    
+    for (let i = 0; i < formData.length; i++) {
+        const field = formData[i];
+        if (!field.value.trim()) {
+            isValid = false;
+            alert(`Please fill out the ${field.name} field.`);
+            break;
+        }
+    }
+
+  if (!isValid) return;
+
+  $.ajax({
+      type: "POST",
+      url: "../../src/routes/routes.php",
+      data: formData + "&type=register", 
+      success: function (data) {
+          if (data === "Registration successful") {
+              alert("Registration successful! Redirecting to login page.");
+              window.location.href = "login.php"; // Redirect to login page
+          } else {
+              alert("Registration failed: " + data);
+          }
+      },
+      error: function (xhr, status, error) {
+          console.error("Error:", error);
+      }
+  });
+}
+
+
