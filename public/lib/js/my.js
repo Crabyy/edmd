@@ -1,12 +1,11 @@
 function user_login() {
   const formData = $("#loginForm").serialize()
   
-  $.ajax({
+$.ajax({
       type: "POST",
       url: "../../src/routes/routes.php",
       data: formData + "&type=login",
       success: function (data) {
-         console.log(data);
           if (data === "Login successful") {
               window.location.href = "home.php"; 
           } else {
@@ -38,7 +37,6 @@ function user_register() {
         url: "../../src/routes/routes.php",
         data: $.param(formData) + "&type=register",
         success: function (data) {
-            console.log("Response from routes.php:", data);
             if (data === "Registration successful") {
                 alert("Registration successful! Redirecting to login page.");
                 window.location.href = "login.php";
@@ -69,4 +67,3 @@ function user_Logout() {
         }
     });
 }
-

@@ -18,7 +18,7 @@ if (isset($_POST['type'])) {
 
         case 'logout':
             $ctr = new userController();
-            echo $ctr->user_logout($_POST);
+            echo $ctr->user_logout();
             break;
 
         default:

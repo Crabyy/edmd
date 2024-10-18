@@ -48,4 +48,3 @@ class userController {
         return "Logout successful";
     }
 }
-?>

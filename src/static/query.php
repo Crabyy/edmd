@@ -11,4 +11,3 @@ class Query {
                 VALUES (:first_name, :last_name, :middle_name, :birthdate, :username, :password, :email, NOW())";
     }
 }
-?>
