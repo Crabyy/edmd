@@ -8,15 +8,24 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/css/home.css">
     <title>Home | Page</title>
+    
 </head>
 <body>
  
-<h2>Hi! <?php echo htmlspecialchars($username); ?> </h2>
+    <div class="navbar">
+        <div>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="logout-button" onclick="user_Logout()">Logout</button>
+    </div>
 
-<h3>Welcome to Home Page</h3>
-
-<button onclick="user_Logout()">Logout</button>
+    <h2 class="greeting">Hi! <?php echo htmlspecialchars($username); ?> </h2>
+<h3 class="welcome">Welcome to Home Page</h3>
     
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
