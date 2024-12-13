@@ -13,9 +13,9 @@ function user_login() {
                     success: function (role) {
                         role = role.trim();
                         if (role === "1") {
-                            window.location.href = "http://localhost/edmd/public/pages/Admin/dashboard.php";
+                            window.location.href = "http://localhost/edmd/public/pages/admin/dashboard.php";
                         } else if (role === "2") {
-                            window.location.href = "http://localhost/edmd/public/pages/User/home.php";
+                            window.location.href = "http://localhost/edmd/public/pages/user/home.php";
                         } else {
                             Swal.fire({
                                 icon: "error",
