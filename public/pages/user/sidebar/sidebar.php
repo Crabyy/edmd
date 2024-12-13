@@ -50,12 +50,12 @@ if (isset($authResponse['redirect'])) {
         <a href="#">
             <i class="far fa-envelope"></i>
             <span>Contact</span>
-        </a>
+        </a> -->
 
         <a onclick="user_logout()">
             <i class="fas fa-lock"></i>
             <span>Logout</span>
-        </a> -->
+        </a>
 
     </div>
 </body>
